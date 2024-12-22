@@ -4,44 +4,24 @@
 {% block title %}My mineral collection | List of minerals{% endblock title %}
 
 {% block content %}
-<div class="col">
+<div class="col text-center">
+    {% for m in object_list %}
     <div class="row justify-content-center px-3 py-2">
-        <div id="mineral-{{}}-card" class="card shadow-sm mx-3 my-3">
+        <div id="mineral-{{ m.pk }}-card" class="card shadow-sm mx-3 my-3">
             <div class="card-body">
                 <div class="text-center">
-                    <h2>Text</h2>
-                </div>
-
-                <div class="btn-group d-flex">
-                    <button id="add-button" class="btn btn-primary bi-plus-circle btn-block"> Update</button>
-                    <button id="edit-button" class="btn btn-danger bi-pencil btn-block"> Delete</button>
-                </div>
-
-                <div class="modal fade" id="confirm-delete" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="confirm-delete-title"></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body fs-6">
-                                This action is irreversible. Are you sure?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep mineral</button>
-                                <button type="button" id="confirm-delete-button" class="btn btn-danger">Delete mineral</button>
-                            </div>
-                        </div>
+                    <h2>{{ m.name }}</h2>
+                    <h4>{{ m.description }}</h4>
+                    <div class="img-div">
+                        <img src="{{ m.image.url }}" class="img-fluid img-thumbnail rounded">
                     </div>
                 </div>
-
-                <form id="delete-form" action="#" method="post" hidden>
-                    {% csrf_token %}
-                    <input type="text" id="delete-pk-input" name="mineral_pk" value="">
-                </form>
             </div>
         </div>
     </div>
+    {% empty %}
+    <h1 class="mt-4">No minerals found! Add them!</h1>
+    {% endfor %}
 </div>
 {% endblock content %}
 

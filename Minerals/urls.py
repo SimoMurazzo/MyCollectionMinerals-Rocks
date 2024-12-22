@@ -1,6 +1,6 @@
 from django.urls import path
-
+from Minerals.views import *
 
 urlpatterns = [
-    path('list/', View.as_view(), name='list')
+
 ]

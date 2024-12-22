@@ -2,20 +2,35 @@
 {% get_current_language as LINGUA_HTML %}
 <!DOCTYPE html>
 <html lang="{{LINGUA_HTML}}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-        <link rel="stylesheet" href="{% static 'styles/vendor/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static 'styles/vendor/bootstrap-icons.css' %}">
-<!--        <link rel="stylesheet" href="{% static 'styles/base.css' %}">-->
-        {% block head %}{% endblock head %}
-        <title>{% block title %}{% endblock title %}</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'styles/vendor/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/vendor/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    {% block head %}{% endblock head %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
 
-    <body>
-        {% block body %}{% endblock body %}
-        <script src="{% static 'scripts/vendor/bootstrap.js' %}"></script>
-        {% block script %}{% endblock script %}
-    </body>
+<body>
+{% block body %}
+
+<header id="navbar" class="navbar sticky-top flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand text-center text-navbar col-md-3 col-lg-2 px-3 me-2"><b>My Mineral Collection</b></a>
+    <a href="{% url 'list' %}" class="btn btn-primary bi bi-gem me-auto fw-bold"> All minerals</a>
+</header>
+
+<div class="container-fluid">
+    <div class="row mt-0">
+        <main id="main" class="col-md-9 col-lg-10 px-md-4">
+            {% block content %}{% endblock content %}
+        </main>
+    </div>
+</div>
+
+{% endblock body %}
+<script src="{% static 'scripts/vendor/bootstrap.js' %}"></script>
+{% block script %}{% endblock script %}
+</body>
 </html>

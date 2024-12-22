@@ -1,0 +1,13 @@
+.navbar {
+    background-color: deepskyblue;
+}
+
+.text-navbar {
+    color: midnightblue;
+}
+
+.img-div {
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+}
