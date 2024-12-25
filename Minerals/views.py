@@ -5,7 +5,7 @@ from Minerals.models import Mineral
 
 class MineralList(ListView):
     template_name = 'listview.html'
-    paginate_by = 1
+    paginate_by = 10
 
     def get_queryset(self):
         query = self.request.GET.get('query')
