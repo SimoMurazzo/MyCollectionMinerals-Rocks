@@ -5,14 +5,27 @@
 
 {% block content %}
 <div class="col text-center">
-    <div class="row mt-4">
+    <form action="{% url 'list' %}" method="get">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-3 px-2 my-1">
+                <input type="text" class="form-control" name="query" placeholder="Name, description, classification" required autofocus>
+            </div>
+            <div class="col-md-auto px-2 my-1">
+                <button class="btn btn-primary bi bi-search fw-bold" type="submit"> Search</button>
+            </div>
+            <div class="col-md-auto px-2 my-1">
+                <a class="btn btn-secondary bi bi-x-circle fw-bold" href="{% url 'list' %}" role="button"> Reset search</a>
+            </div>
+        </div>
+    </form>
+    <div class="row row-cols-1 row-cols-md-4 row-cols-lg-6 mt-4">
     {% for m in object_list %}
-        <div class="col-sm-3 mb-3 mx-2 px-0">
-            <div class="card">
+        <div class="col mb-4">
+            <div class="card h-100">
                 <img src="{{ m.image.url }}" class="card-img-top" alt="{{ m.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ m.name }}</h5>
-                    <p class="card-text">{{ m.description }}</p>
+                    <p class="card-text">{{ m.description|truncatechars:36 }}</p>
                 </div>
                 <div class="card-footer">
                     <a href="#" class="btn btn-primary fw-bold bi bi-info-circle"> Detail</a>
