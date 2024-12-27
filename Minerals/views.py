@@ -12,7 +12,7 @@ class MineralList(ListView):
         query = self.request.GET.get('query')
         print(query)
         if query:
-            return Mineral.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+            return Mineral.objects.filter(Q(name__icontains=query) | Q(description__icontains=query) | Q(strunz_class=query))
         else:
             return Mineral.objects.all()
 

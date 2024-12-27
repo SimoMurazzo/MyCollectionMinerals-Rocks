@@ -15,11 +15,11 @@
                         <table class="table table-bordered table-striped text-left fs-4">
                             <tbody>
                                 <tr>
-                                    <th>Name</th>
+                                    <th class="bi bi-hash"> Name</th>
                                     <td>{{ object.name }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Description</th>
+                                    <th class="bi bi-justify"> Description</th>
                                     <td>{{ object.description }}</td>
                                 </tr>
                                 {% if object.locality %}
@@ -68,7 +68,7 @@
                                 </tr>
                                 {% if object.formula %}
                                 <tr>
-                                    <th>Formula</th>
+                                    <th class="bi bi-subscript"> Formula</th>
                                     <td>{{ object.formula }}</td>
                                 </tr>
                                 {% endif %}
@@ -114,28 +114,28 @@
                                 {% endif %}
                                 {% if object.pleochroism %}
                                 <tr>
-                                    <th>Pleochroism</th>
+                                    <th class="bi bi-palette"> Pleochroism</th>
                                     <td>{{ object.pleochroism }}</td>
                                 </tr>
                                 {% endif %}
                                 {% if object.radioactivity %}
                                 <tr>
-                                    <th>Radioactivity</th>
+                                    <th class="bi bi-radioactive"> Radioactivity</th>
                                     <td>{{ object.radioactivity }}</td>
                                 </tr>
                                 {% endif %}
                                 {% if object.strunz_class %}
                                 <tr>
-                                    <th>Strunz classification</th>
+                                    <th class="bi bi-bar-chart-steps"> Strunz classification</th>
                                     <td>{{ object.strunz_class }}</td>
                                 </tr>
                                 {% endif %}
                                 <tr>
-                                    <th>Creation date</th>
+                                    <th class="bi bi-calendar-plus"> Creation date</th>
                                     <td>{{ object.creation_date }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Update date</th>
+                                    <th class="bi bi-calendar-check"> Update date</th>
                                     <td>{{ object.update_date }}</td>
                                 </tr>
                             </tbody>
