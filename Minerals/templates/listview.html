@@ -1,19 +1,52 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}My mineral collection | List of minerals{% endblock title %}
+{% block title %}My mineral collection | List{% endblock title %}
 
 {% block content %}
 <div class="col text-center">
     <form action="{% url 'list' %}" method="get">
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-2 px-2 my-1">
-                <input type="text" class="form-control" name="query" placeholder="Name, description, classification" required autofocus>
-            </div>
+        <div class="row justify-content-center fs-4 mt-4">
             <div class="col-md-auto px-2 my-1">
+                <button id="toggle-search-button" class="btn btn-primary bi bi-arrows-expand fw-bold" type="button"> Advanced search</button>
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="locality" placeholder="Locality">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="rarity" placeholder="Rarity">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="environment" placeholder="Environment">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="crystal_system" placeholder="Crystal system">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="cleavage" placeholder="Cleavage">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="luminescence" placeholder="Luminescence">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="luster" placeholder="Luster">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="streak" placeholder="Streak">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="pleochroism" placeholder="Pleochroism">
+            </div>
+            <div class="col-md-2 px-2 my-1 advanced-search" hidden>
+                <input type="text" class="form-control" name="radioactivity" placeholder="Radioactivity">
+            </div>
+            <div class="col-md-2 px-2 my-1">
+                <input type="text" class="form-control" name="query" placeholder="Name, description, classification" autofocus>
+            </div>
+            <div class="col-5 col-sm-3 col-md-auto px-2 my-1">
                 <button class="btn btn-primary bi bi-search fw-bold" type="submit"> Search</button>
             </div>
-            <div class="col-md-auto px-2 my-1">
+            <div class="col-6 col-sm-4 col-md-auto px-2 my-1">
                 <a class="btn btn-secondary bi bi-arrow-counterclockwise fw-bold" href="{% url 'list' %}" role="button"> Reset search</a>
             </div>
         </div>
@@ -40,5 +73,17 @@
 </div>
 {% endblock content %}
 
-{% block content_script %}
-{% endblock content_script %}
+{% block script %}
+<script type="text/javascript">
+const toggle_search_button = document.getElementById('toggle-search-button');
+const advanced_search = document.getElementsByClassName('advanced-search');
+toggle_search_button.addEventListener("click", () => {
+    console.log('lol');
+    toggle_search_button.classList.toggle('bi-arrows-expand');
+    toggle_search_button.classList.toggle('bi-arrows-collapse');
+    for (const e of advanced_search) {
+        e.toggleAttribute('hidden');
+    }
+});
+</script>
+{% endblock script %}
