@@ -1,5 +1,7 @@
 from django import template
 
+from Minerals.models import remove_exponent
+
 register = template.Library()
 
 
@@ -9,3 +11,13 @@ def keep_query_params(context, **kwargs):
     for k, v in kwargs.items():
         query[k] = v
     return f'?{query.urlencode()}'
+
+
+@register.filter
+def to_ct(value):
+    return value * 5
+
+
+@register.filter
+def remove_exponent_tag(value):
+    return remove_exponent(value)

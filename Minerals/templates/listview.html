@@ -28,7 +28,7 @@
                     <p class="card-text">{{ m.description|truncatechars:36 }}</p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary fw-bold bi bi-info-circle"> Detail</a>
+                    <a href="{% url 'detail' pk=m.pk %}" class="btn btn-primary fw-bold bi bi-info-circle"> Detail</a>
                 </div>
             </div>
         </div>

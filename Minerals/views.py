@@ -15,3 +15,8 @@ class MineralList(ListView):
             return Mineral.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
         else:
             return Mineral.objects.all()
+
+
+class MineralDetail(DetailView):
+    template_name = 'detailview.html'
+    model = Mineral

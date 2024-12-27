@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+{% load static %}
+
+{% block title %}My mineral collection | Detail{% endblock title %}
+
+{% block content %}
+<div class="col">
+    <div class="row justify-content-center mt-4">
+        <div class="col-sm-10 col-lg-8 col-xl-6 mb-4">
+            <div class="card h-100">
+                <img src="{{ object.image.url }}" class="card-img-top" alt="{{ object.name }}">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped text-left fs-4">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ object.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>{{ object.description }}</td>
+                                </tr>
+                                {% if object.locality %}
+                                <tr>
+                                    <th class="bi bi-geo"> Locality</th>
+                                    <td>{{ object.locality }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.mass_g %}
+                                <tr>
+                                    <th class="bi bi-caret-down-fill"> Mass (g)</th>
+                                    <td>{{ object.mass_g|remove_exponent_tag }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="bi bi-gem"> Mass (ct)</th>
+                                    <td>{{ object.mass_g|to_ct|remove_exponent_tag }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.size_x_mm %}
+                                <tr>
+                                    <th class="bi bi-arrows"> Size x (mm)</th>
+                                    <td>{{ object.size_x_mm }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.size_y_mm %}
+                                <tr>
+                                    <th class="bi bi-arrows-angle-expand"> Size y (mm)</th>
+                                    <td>{{ object.size_y_mm }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.size_z_mm %}
+                                <tr>
+                                    <th class="bi bi-arrows-vertical"> Size z (mm)</th>
+                                    <td>{{ object.size_z_mm }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.notes %}
+                                <tr>
+                                    <th class="bi bi-clipboard"> Notes</th>
+                                    <td>{{ object.notes }}</td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <th class="bi bi-star"> Rarity</th>
+                                    <td>{{ object.rarity }}</td>
+                                </tr>
+                                {% if object.formula %}
+                                <tr>
+                                    <th>Formula</th>
+                                    <td>{{ object.formula }}</td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <th class="bi bi-globe"> Environment</th>
+                                    <td>{{ object.environment }}</td>
+                                </tr>
+                                {% if object.crystal_system %}
+                                <tr>
+                                    <th class="bi bi-box"> Crystal system</th>
+                                    <td>{{ object.crystal_system }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.cleavage %}
+                                <tr>
+                                    <th class="bi bi-hammer"> Cleavage</th>
+                                    <td>{{ object.cleavage }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.hardness %}
+                                <tr>
+                                    <th class="bi bi-screwdriver"> Hardness</th>
+                                    <td>{{ object.hardness|remove_exponent_tag }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.luminescence %}
+                                <tr>
+                                    <th class="bi bi-lightbulb"> Luminescence</th>
+                                    <td>{{ object.luminescence }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.luster %}
+                                <tr>
+                                    <th class="bi bi-stars"> Luster</th>
+                                    <td>{{ object.luster }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.streak %}
+                                <tr>
+                                    <th class="bi bi-highlighter"> Streak</th>
+                                    <td>{{ object.streak }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.pleochroism %}
+                                <tr>
+                                    <th>Pleochroism</th>
+                                    <td>{{ object.pleochroism }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.radioactivity %}
+                                <tr>
+                                    <th>Radioactivity</th>
+                                    <td>{{ object.radioactivity }}</td>
+                                </tr>
+                                {% endif %}
+                                {% if object.strunz_class %}
+                                <tr>
+                                    <th>Strunz classification</th>
+                                    <td>{{ object.strunz_class }}</td>
+                                </tr>
+                                {% endif %}
+                                <tr>
+                                    <th>Creation date</th>
+                                    <td>{{ object.creation_date }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Update date</th>
+                                    <td>{{ object.update_date }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block content_script %}
+{% endblock content_script %}

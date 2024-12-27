@@ -1,4 +1,9 @@
 from django.db import models
+from decimal import Decimal
+
+
+def remove_exponent(d):
+    return d.quantize(Decimal(1)) if d == d.to_integral() else d.normalize()
 
 
 class Mineral(models.Model):
@@ -13,16 +18,16 @@ class Mineral(models.Model):
     size_z_mm = models.PositiveIntegerField(blank=True, null=True)
     notes = models.TextField(blank=True)
     rarity = models.CharField(max_length=120)
-    formula = models.TextField()
+    formula = models.TextField(blank=True)
     environment = models.TextField()
-    crystal_system = models.CharField(max_length=120)
-    cleavage = models.CharField(max_length=120)
-    hardness = models.DecimalField(decimal_places=3, max_digits=5)
+    crystal_system = models.CharField(max_length=120, blank=True)
+    cleavage = models.CharField(max_length=120, blank=True)
+    hardness = models.DecimalField(decimal_places=3, max_digits=5, blank=True, null=True)
     luminescence = models.CharField(max_length=120, blank=True)
-    luster = models.CharField(max_length=120)
-    streak = models.CharField(max_length=120)
+    luster = models.CharField(max_length=120, blank=True)
+    streak = models.CharField(max_length=120, blank=True)
     pleochroism = models.CharField(max_length=120, blank=True)
     radioactivity = models.CharField(max_length=120, blank=True)
-    strunz_class = models.CharField(max_length=10)
+    strunz_class = models.CharField(max_length=10, blank=True)
     image = models.ImageField()
 
