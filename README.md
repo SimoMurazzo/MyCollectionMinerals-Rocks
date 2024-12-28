@@ -1,4 +1,4 @@
-# MyMineralCollection
+# MyCollectionMinerals-Rocks
 Web app Django-based to store, manage and show your collection of minerals / rocks
 
 Copyright (C) 2024  Simone Murazzo
