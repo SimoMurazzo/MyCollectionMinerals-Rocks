@@ -1,5 +1,5 @@
 # MyMineralCollection
-Web app Django based to store, manage and show your mineral collection
+Web app Django-based to store, manage and show your mineral collection
 
 ## First run (only in development mode)
 
