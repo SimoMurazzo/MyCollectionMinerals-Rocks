@@ -18,8 +18,8 @@ GNU General Public License for more details.
 Install Git, Python and pip.
 
 ```
-$ git clone https://github.com/SimoMurazzo/MyMineralCollection.git
-$ cd MyMineralCollection
+$ git clone https://github.com/SimoMurazzo/MyCollectionMinerals-Rocks.git
+$ cd MyCollectionMinerals-Rocks
 $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ pip install wheel
