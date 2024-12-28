@@ -17,11 +17,3 @@ $ export DJANGO_SUPERUSER_PASSWORD=password
 $ python manage.py createsuperuser --no-input --username admin
 $ python manage.py runserver
 ```
-
-## Python notes
-
-To add a new Python dependency, install `pip-compile` with `pip install pip-tools`, add a line in alphabetical order to `requirements.in` with the name of the package, then run:
-```
-$ pip-compile
-$ pip install --no-deps --require-hashes -r requirements.txt
-```
