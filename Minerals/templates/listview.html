@@ -11,40 +11,40 @@
                 <button id="toggle-search-button" class="btn btn-primary bi bi-arrows-expand fw-bold" type="button"> Advanced search</button>
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="locality" placeholder="Locality">
+                <input type="text" class="form-control input-search" name="locality" placeholder="Locality">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="rarity" placeholder="Rarity">
+                <input type="text" class="form-control input-search" name="rarity" placeholder="Rarity">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="environment" placeholder="Environment">
+                <input type="text" class="form-control input-search" name="environment" placeholder="Environment">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="crystal_system" placeholder="Crystal system">
+                <input type="text" class="form-control input-search" name="crystal_system" placeholder="Crystal system">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="cleavage" placeholder="Cleavage">
+                <input type="text" class="form-control input-search" name="cleavage" placeholder="Cleavage">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="luminescence" placeholder="Luminescence">
+                <input type="text" class="form-control input-search" name="luminescence" placeholder="Luminescence">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="luster" placeholder="Luster">
+                <input type="text" class="form-control input-search" name="luster" placeholder="Luster">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="streak" placeholder="Streak">
+                <input type="text" class="form-control input-search" name="streak" placeholder="Streak">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="pleochroism" placeholder="Pleochroism">
+                <input type="text" class="form-control input-search" name="pleochroism" placeholder="Pleochroism">
             </div>
             <div class="col-md-2 px-2 my-1 advanced-search" hidden>
-                <input type="text" class="form-control" name="radioactivity" placeholder="Radioactivity">
+                <input type="text" class="form-control input-search" name="radioactivity" placeholder="Radioactivity">
             </div>
             <div class="col-md-2 px-2 my-1">
-                <input type="text" class="form-control" name="query" placeholder="Name, description, classification" autofocus>
+                <input type="text" class="form-control input-search" name="query" placeholder="Name, description, classification" autofocus>
             </div>
             <div class="col-5 col-sm-3 col-md-auto px-2 my-1">
-                <button class="btn btn-primary bi bi-search fw-bold" type="submit"> Search</button>
+                <button id="search-button" class="btn btn-primary bi bi-search fw-bold" type="submit" disabled> Search</button>
             </div>
             <div class="col-6 col-sm-4 col-md-auto px-2 my-1">
                 <a class="btn btn-secondary bi bi-arrow-counterclockwise fw-bold" href="{% url 'list' %}" role="button"> Reset search</a>
@@ -78,12 +78,29 @@
 const toggle_search_button = document.getElementById('toggle-search-button');
 const advanced_search = document.getElementsByClassName('advanced-search');
 toggle_search_button.addEventListener("click", () => {
-    console.log('lol');
     toggle_search_button.classList.toggle('bi-arrows-expand');
     toggle_search_button.classList.toggle('bi-arrows-collapse');
     for (const e of advanced_search) {
         e.toggleAttribute('hidden');
     }
 });
+
+const search_button = document.getElementById('search-button');
+const input_search = document.getElementsByClassName('input-search');
+for (const i of input_search) {
+    i.addEventListener("input", () => {
+        let length = 0;
+        for (const input of input_search) {
+            length = length + input.value.trim().length;
+        }
+        if (length === 0) {
+            search_button.setAttribute("disabled", "true");
+        }
+        else {
+            search_button.removeAttribute("disabled");
+        }
+        console.log(length);
+    });
+}
 </script>
 {% endblock script %}
