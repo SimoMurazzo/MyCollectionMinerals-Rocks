@@ -1,5 +1,8 @@
+import os
+
 from django.db import models
 from decimal import Decimal
+from PIL import Image
 
 
 def remove_exponent(d):
@@ -30,4 +33,15 @@ class Mineral(models.Model):
     radioactivity = models.CharField(max_length=120, blank=True)
     strunz_class = models.CharField(max_length=10, blank=True)
     image = models.ImageField()
+
+    def save(self, **kwargs):
+        super().save(**kwargs)
+        height = 320
+        im = Image.open(self.image.path)
+        new_width = int(im.width / im.height * height)
+        thumb = im.resize((new_width, height))
+        directory = os.path.dirname(self.image.path)
+        filename = os.path.basename(self.image.path)
+        thumb.save(f"{directory}/thumb_{filename}")
+
 

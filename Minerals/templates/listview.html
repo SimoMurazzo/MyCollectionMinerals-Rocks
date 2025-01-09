@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load custom_tags %}
 {% load static %}
 
 {% block title %}My collection minerals & rocks | List{% endblock title %}
@@ -55,7 +56,7 @@
     {% for m in object_list %}
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="{{ m.image.url }}" class="card-img-top" alt="{{ m.name }}">
+                <img src="{{ m.image.url|get_thumbnail }}" class="card-img-top" alt="{{ m.name }}">
                 <div class="card-body">
                     <h5 class="card-title">{{ m.name }}</h5>
                     <p class="card-text">{{ m.description|truncatechars:36 }}</p>

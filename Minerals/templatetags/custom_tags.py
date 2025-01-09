@@ -1,5 +1,5 @@
+import os
 from django import template
-
 from Minerals.models import remove_exponent
 
 register = template.Library()
@@ -21,3 +21,9 @@ def to_ct(value):
 @register.filter
 def remove_exponent_tag(value):
     return remove_exponent(value)
+
+@register.filter
+def get_thumbnail(value):
+    dirname = os.path.dirname(value)
+    filename = os.path.basename(value)
+    return f"{dirname}/thumb_{filename}"
