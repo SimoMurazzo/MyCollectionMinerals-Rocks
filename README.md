@@ -15,17 +15,14 @@ GNU General Public License for more details.
 
 ## First run (only in development mode)
 
-Install Git, Python and pip.
+Install Git and [uv](https://docs.astral.sh/uv/).
 
 ```
 $ git clone https://github.com/SimoMurazzo/MyCollectionMinerals-Rocks.git
 $ cd MyCollectionMinerals-Rocks
-$ python3 -m venv .venv
-$ source .venv/bin/activate
-$ pip install wheel
-$ pip install --no-deps --require-hashes -r requirements.txt
-$ python manage.py migrate
+$ uv sync --locked
+$ uv run manage.py migrate
 $ export DJANGO_SUPERUSER_PASSWORD=password
-$ python manage.py createsuperuser --no-input --username admin
-$ python manage.py runserver
+$ uv run manage.py createsuperuser --no-input --username admin
+$ uv run manage.py runserver
 ```
